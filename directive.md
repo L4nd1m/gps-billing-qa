@@ -3,7 +3,7 @@
 > **100 % synthetic data and a fictional case** (the brief's suggested case, not a
 > live product). Every number below was produced by running the linked code;
 > the saved console outputs are linked next to each claim.
-> Assumptions and the AI log are in [`intent.md`](intent.md).
+> Assumptions and the AI log are in [`intent.md`](https://github.com/L4nd1m/gps-billing-qa/blob/main/intent.md).
 
 ## Result in one line
 
@@ -17,26 +17,26 @@ fail on the old behaviour or guard what it already did right, and pass on the fi
 
 | What | Link |
 |---|---|
-| **QA tool** (checker + report, exit 1 on failure) | [`qa_check.py`](qa_check.py) |
-| **HTML report** (self-contained, no scripts; download and open, or serve via Pages) | [`reports/qa_report.html`](reports/qa_report.html) |
-| QA tool console output | [`reports/qa_check_output.txt`](reports/qa_check_output.txt) |
-| **Synthetic data**: pings (input, arrival order) | [`data/pings.csv`](data/pings.csv) |
-| Answer key (fault of every ping) | [`data/answer_key.csv`](data/answer_key.csv) |
-| Expected km per driver per day | [`data/expected_km.csv`](data/expected_km.csv) |
-| True road km (for the corner-cutting gap) | [`data/truth_road.csv`](data/truth_road.csv) |
-| Data label and seed | [`data/README.md`](data/README.md) |
-| Generator / world model / expected-km calculator | [`gpsqa/generate.py`](gpsqa/generate.py), [`gpsqa/world.py`](gpsqa/world.py), [`gpsqa/expected.py`](gpsqa/expected.py) |
-| **Legacy (wrong) calculation**, bugs commented | [`gpsqa/legacy.py`](gpsqa/legacy.py) · output [`legacy_km.csv`](data/legacy_km.csv) · [`console`](reports/legacy_vs_expected_output.txt) |
-| **Root cause**: exact replica + 32-combination attribution | [`gpsqa/replica.py`](gpsqa/replica.py), [`gpsqa/attribution.py`](gpsqa/attribution.py) · [`console`](reports/attribution_output.txt) · [`combos`](data/attribution_combos.csv) · [`shares`](data/attribution_shares.csv) |
-| **Fix**: corrected calculation, rules R1–R8 switchable | [`gpsqa/fixed.py`](gpsqa/fixed.py) · output [`fixed_km.csv`](data/fixed_km.csv) · [`console`](reports/fixed_vs_expected_output.txt) |
-| **Regression tests** | [`tests/test_rules.py`](tests/test_rules.py) · runner [`tests/run_regression.py`](tests/run_regression.py) · [`results`](reports/regression_tests_output.txt) |
-| Sabotage (mutation) check of the tests | [`tests/sabotage.py`](tests/sabotage.py) · [`results`](reports/sabotage_output.txt) |
+| **QA tool** (checker + report, exit 1 on failure) | [`qa_check.py`](https://github.com/L4nd1m/gps-billing-qa/blob/main/qa_check.py) |
+| **HTML report** (self-contained, no scripts), published on GitHub Pages | [view report](https://l4nd1m.github.io/gps-billing-qa/reports/qa_report.html) · [source](https://github.com/L4nd1m/gps-billing-qa/blob/main/reports/qa_report.html) |
+| QA tool console output | [`reports/qa_check_output.txt`](https://github.com/L4nd1m/gps-billing-qa/blob/main/reports/qa_check_output.txt) |
+| **Synthetic data**: pings (input, arrival order) | [`data/pings.csv`](https://github.com/L4nd1m/gps-billing-qa/blob/main/data/pings.csv) |
+| Answer key (fault of every ping) | [`data/answer_key.csv`](https://github.com/L4nd1m/gps-billing-qa/blob/main/data/answer_key.csv) |
+| Expected km per driver per day | [`data/expected_km.csv`](https://github.com/L4nd1m/gps-billing-qa/blob/main/data/expected_km.csv) |
+| True road km (for the corner-cutting gap) | [`data/truth_road.csv`](https://github.com/L4nd1m/gps-billing-qa/blob/main/data/truth_road.csv) |
+| Data label and seed | [`data/README.md`](https://github.com/L4nd1m/gps-billing-qa/blob/main/data/README.md) |
+| Generator / world model / expected-km calculator | [`gpsqa/generate.py`](https://github.com/L4nd1m/gps-billing-qa/blob/main/gpsqa/generate.py), [`gpsqa/world.py`](https://github.com/L4nd1m/gps-billing-qa/blob/main/gpsqa/world.py), [`gpsqa/expected.py`](https://github.com/L4nd1m/gps-billing-qa/blob/main/gpsqa/expected.py) |
+| **Legacy (wrong) calculation**, bugs commented | [`gpsqa/legacy.py`](https://github.com/L4nd1m/gps-billing-qa/blob/main/gpsqa/legacy.py) · output [`legacy_km.csv`](https://github.com/L4nd1m/gps-billing-qa/blob/main/data/legacy_km.csv) · [`console`](https://github.com/L4nd1m/gps-billing-qa/blob/main/reports/legacy_vs_expected_output.txt) |
+| **Root cause**: exact replica + 32-combination attribution | [`gpsqa/replica.py`](https://github.com/L4nd1m/gps-billing-qa/blob/main/gpsqa/replica.py), [`gpsqa/attribution.py`](https://github.com/L4nd1m/gps-billing-qa/blob/main/gpsqa/attribution.py) · [`console`](https://github.com/L4nd1m/gps-billing-qa/blob/main/reports/attribution_output.txt) · [`combos`](https://github.com/L4nd1m/gps-billing-qa/blob/main/data/attribution_combos.csv) · [`shares`](https://github.com/L4nd1m/gps-billing-qa/blob/main/data/attribution_shares.csv) |
+| **Fix**: corrected calculation, rules R1–R8 switchable | [`gpsqa/fixed.py`](https://github.com/L4nd1m/gps-billing-qa/blob/main/gpsqa/fixed.py) · output [`fixed_km.csv`](https://github.com/L4nd1m/gps-billing-qa/blob/main/data/fixed_km.csv) · [`console`](https://github.com/L4nd1m/gps-billing-qa/blob/main/reports/fixed_vs_expected_output.txt) |
+| **Regression tests** | [`tests/test_rules.py`](https://github.com/L4nd1m/gps-billing-qa/blob/main/tests/test_rules.py) · runner [`tests/run_regression.py`](https://github.com/L4nd1m/gps-billing-qa/blob/main/tests/run_regression.py) · [`results`](https://github.com/L4nd1m/gps-billing-qa/blob/main/reports/regression_tests_output.txt) |
+| Sabotage (mutation) check of the tests | [`tests/sabotage.py`](https://github.com/L4nd1m/gps-billing-qa/blob/main/tests/sabotage.py) · [`results`](https://github.com/L4nd1m/gps-billing-qa/blob/main/reports/sabotage_output.txt) |
 
 ## 1. Problems found, ranked by impact on advertiser and driver
 
 Error = sum over driver-days of |legacy − expected|; total **70,141.099 m**.
 "Share" is each bug's Shapley share of the error removed (average over all
-orders of fixing, so shares add up exactly). Source: [`attribution_output.txt`](reports/attribution_output.txt).
+orders of fixing, so shares add up exactly). Source: [`attribution_output.txt`](https://github.com/L4nd1m/gps-billing-qa/blob/main/reports/attribution_output.txt).
 
 | Rank | Problem | Share | Removed if fixed alone | Who is hurt |
 |---|---|---|---|---|
@@ -57,15 +57,15 @@ bigger per day but moves no money in the totals.
 ### How each problem was found
 - **Answer key + data checks:** `qa_check` detectors (duplicates, arrival order,
   off-road, speed) scored against the answer key: 0 false positives and
-  0 false negatives on all checks ([`qa_check_output.txt`](reports/qa_check_output.txt)).
+  0 false negatives on all checks ([`qa_check_output.txt`](https://github.com/L4nd1m/gps-billing-qa/blob/main/reports/qa_check_output.txt)).
 - **Per driver per day comparison:** legacy vs expected showed +6,472 to
-  +18,339 m too much on 03-10 and 0 m on 03-11 ([`legacy_vs_expected_output.txt`](reports/legacy_vs_expected_output.txt)).
+  +18,339 m too much on 03-10 and 0 m on 03-11 ([`legacy_vs_expected_output.txt`](https://github.com/L4nd1m/gps-billing-qa/blob/main/reports/legacy_vs_expected_output.txt)).
 - **Exact reproduction before blame:** a from-scratch replica with each bug
   switchable reproduces legacy **bit-for-bit on 4/4 driver-days (difference 0.0)**.
   All 32 on/off combinations were then run to attribute the error
-  ([`attribution_combos.csv`](data/attribution_combos.csv)).
+  ([`attribution_combos.csv`](https://github.com/L4nd1m/gps-billing-qa/blob/main/data/attribution_combos.csv)).
 
-## 2. The fix (rules in [`gpsqa/fixed.py`](gpsqa/fixed.py))
+## 2. The fix (rules in [`gpsqa/fixed.py`](https://github.com/L4nd1m/gps-billing-qa/blob/main/gpsqa/fixed.py))
 
 | Rule | Meaning |
 |---|---|
@@ -78,7 +78,7 @@ bigger per day but moves no money in the totals.
 | R7 | Do not bill a line spanning more than 60 s |
 | R8 | An unconfirmed anchor (first ping) is checked with a one-ping look-ahead |
 
-Each rule switched **off** on the dataset ([`fixed_vs_expected_output.txt`](reports/fixed_vs_expected_output.txt)):
+Each rule switched **off** on the dataset ([`fixed_vs_expected_output.txt`](https://github.com/L4nd1m/gps-billing-qa/blob/main/reports/fixed_vs_expected_output.txt)):
 R5 off 208,584.022 m error · R4 off 56,195.104 m · R6 off 50,349.762 m (net 0) ·
 R2 off 3,660.606 m · R3 off 3,129.960 m · R1, R7, R8 off 0.000 m.
 R1, R7 and R8 change nothing on *this* dataset; the tests below prove they work.
@@ -87,7 +87,7 @@ R2 off is small only because R7 drops the long back-and-forth lines (measured:
 
 ## 3. Before and after, per driver per day
 
-Source: [`qa_check_output.txt`](reports/qa_check_output.txt). Legacy labels days
+Source: [`qa_check_output.txt`](https://github.com/L4nd1m/gps-billing-qa/blob/main/reports/qa_check_output.txt). Legacy labels days
 by UTC date, so all of its metres sit on 03-10.
 
 | Driver | Day (UTC+9) | Expected m | Before (legacy) m | After (fixed) m |
@@ -104,19 +104,19 @@ by UTC date, so all of its metres sit on 03-10.
 
 ## 4. Locked in
 
-- **22 tests** ([`test_rules.py`](tests/test_rules.py)), each checking billed
+- **22 tests** ([`test_rules.py`](https://github.com/L4nd1m/gps-billing-qa/blob/main/tests/test_rules.py)), each checking billed
   metres to 1e-6 m **and** exactly which pings were rejected and why.
   13 regression tests must fail on legacy **with the exact wrong result they
   declare**, so they fail for the stated bug and not some other reason.
   8 guard tests cover what legacy already did right and must pass on both.
   1 test checks the limit functions directly and runs on the fix only.
-  Runner result: **PASS** ([`regression_tests_output.txt`](reports/regression_tests_output.txt)).
+  Runner result: **PASS** ([`regression_tests_output.txt`](https://github.com/L4nd1m/gps-billing-qa/blob/main/reports/regression_tests_output.txt)).
 - **Exact limits:** 100 m, 150 km/h and 60 s are tested at ±1 mm / ±1 ms, at
   the nearest representable coordinates either side of each limit, and
   exactly at each limit through the limit functions.
 - **Tests checked by sabotage:** each threshold nudged by ±0.01 in its unit,
   each rule R1–R8 switched off, plus 5 targeted bugs. **25 of 25 mutants
-  caught** ([`sabotage_output.txt`](reports/sabotage_output.txt)).
+  caught** ([`sabotage_output.txt`](https://github.com/L4nd1m/gps-billing-qa/blob/main/reports/sabotage_output.txt)).
 - **Independent oracle:** tests build pings with their own projection and
   haversine; one test pins the production projection to hand-checkable values.
 
@@ -153,6 +153,7 @@ python tests/sabotage.py                              # do the tests catch sabot
 
 ## Before submitting [FILL IN]
 
-- [ ] Push the folder to a host (it is not a git repo yet) and open **every** link above from a logged-out browser.
-- [ ] Tick the eye-checks you actually did in [`intent.md`](intent.md); confirm the "fix first" choice above.
+- [x] Published: repository https://github.com/L4nd1m/gps-billing-qa, report on GitHub Pages.
+- [ ] Open **every** link above from a logged-out browser.
+- [ ] Tick the eye-checks you actually did in [`intent.md`](https://github.com/L4nd1m/gps-billing-qa/blob/main/intent.md); confirm the "fix first" choice above.
 - [ ] Record the Loom video.
