@@ -1,0 +1,37 @@
+﻿test                                             tag        legacy  fixed  ok
+test_R1_duplicates_first_arrival_kept            guard      pass    pass   OK
+test_R1_shifted_copy_arriving_first_is_kept      guard      pass    pass   OK
+test_R2_late_ping_placed_by_its_timestamp        regression fail    pass   OK
+    legacy: DECLARED legacy failure (bugs 1+2): metres (got, want): ('T-01', '2026-03-10'): (600.000000, 400.000000)
+test_R3_off_road_limit_1mm                       guard      pass    pass   OK
+test_R3_off_road_limit_nearest_floats            guard      pass    pass   OK
+test_R4_jump_does_not_move_anchor                regression fail    pass   OK
+    legacy: DECLARED legacy failure (bug 3): metres (got, want): ('T-01', '2026-03-10'): (200.000000, 400.000000) | rejections got {'J': 'too_fast', 'C': 'too_fast'}, want {'J': 'too_fast'}
+test_R4_speed_limit_1mm                          guard      pass    pass   OK
+test_R4_speed_limit_nearest_floats               regression fail    pass   OK
+    legacy: DECLARED legacy failure (legacy Earth radius 6,371,000 m): metres (got, want): ('T-02', '2026-03-10'): (416.666667, 0.000000) | rejections got {}, want {'Pabove': 'too_fast'}
+test_R5_R6_line_crosses_zone_edge_and_midnight   regression fail    pass   OK
+    legacy: DECLARED legacy failure (bugs 4+5): metres (got, want): ('T-01', '2026-03-10'): (100.000000, 0.000000), ('T-01', '2026-03-11'): (0.000000, 130.000000)
+test_R5_ping_exactly_on_zone_edge                guard      pass    pass   OK
+test_R5_zone_east_west_edges                     regression fail    pass   OK
+    legacy: DECLARED legacy failure (bug 4): metres (got, want): ('T-01', '2026-03-10'): (200.000000, 250.000000), ('T-02', '2026-03-10'): (200.000000, 150.000000)
+test_R5_zone_inner_corner                        regression fail    pass   OK
+    legacy: DECLARED legacy failure (bug 4): metres (got, want): ('T-01', '2026-03-10'): (282.820172, 212.115324)
+test_R5_zone_north_south_edges                   regression fail    pass   OK
+    legacy: DECLARED legacy failure (bug 4): metres (got, want): ('T-01', '2026-03-10'): (99.989008, 149.983512), ('T-02', '2026-03-10'): (199.978016, 149.983512)
+test_R6_day_cut_split_by_time                    regression fail    pass   OK
+    legacy: DECLARED legacy failure (bug 5): metres (got, want): ('T-01', '2026-03-10'): (300.000000, 150.000000), ('T-01', '2026-03-11'): (0.000000, 150.000000)
+test_R6_ping_exactly_at_midnight                 regression fail    pass   OK
+    legacy: DECLARED legacy failure (bug 5): metres (got, want): ('T-01', '2026-03-10'): (200.000000, 100.000000), ('T-01', '2026-03-11'): (0.000000, 100.000000)
+test_R7_gap_limit_60s                            regression fail    pass   OK
+    legacy: DECLARED legacy failure (no gap rule): metres (got, want): ('T-01', '2026-03-10'): (900.000000, 600.000000)
+test_R8_bad_first_ping                           regression fail    pass   OK
+    legacy: DECLARED legacy failure (bug 3): rejections got {'A': 'too_fast'}, want {'J0': 'bad_anchor'}
+test_R8_bad_second_ping_keeps_good_anchor        regression fail    pass   OK
+    legacy: DECLARED legacy failure (bug 3): metres (got, want): ('T-01', '2026-03-10'): (100.000000, 300.000000) | rejections got {'J': 'too_fast', 'B': 'too_fast'}, want {'J': 'too_fast'}
+test_distance_uses_mean_earth_radius             regression fail    pass   OK
+    legacy: DECLARED legacy failure (legacy Earth radius 6,371,000 m): metres (got, want): ('T-01', '2026-03-10'): (999.998619, 1000.000000)
+test_drivers_interleaved_in_arrival_order        guard      pass    pass   OK
+test_limit_predicates_exact_values               fixed_only skip    pass   OK
+test_projection_pinned_to_independent_values     guard      pass    pass   OK
+RESULT: PASS

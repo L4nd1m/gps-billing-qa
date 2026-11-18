@@ -1,0 +1,32 @@
+﻿baseline: 22 tests, failures: none
+
+A. Thresholds nudged by 0.01 (in their own unit)
+  OFFROAD_M 100 -> 99.99 m                             CAUGHT by 3  R3_off_road_limit_1mm, R3_off_road_limit_nearest_floats, limit_predicates_exact_values
+  OFFROAD_M 100 -> 100.01 m                            CAUGHT by 3  R3_off_road_limit_1mm, R3_off_road_limit_nearest_floats, limit_predicates_exact_values
+  MAX_KMH 150 -> 149.99 km/h                           CAUGHT by 3  R4_speed_limit_1mm, R4_speed_limit_nearest_floats, limit_predicates_exact_values
+  MAX_KMH 150 -> 150.01 km/h                           CAUGHT by 3  R4_speed_limit_1mm, R4_speed_limit_nearest_floats, limit_predicates_exact_values
+  MAX_GAP_S 60 -> 59.99 s                              CAUGHT by 3  R7_gap_limit_60s, distance_uses_mean_earth_radius, limit_predicates_exact_values
+  MAX_GAP_S 60 -> 60.01 s                              CAUGHT by 2  R7_gap_limit_60s, limit_predicates_exact_values
+  day cut UTC+9 -> UTC+8.99 h                          CAUGHT by 3  R5_R6_line_crosses_zone_edge_and_midnight, R6_day_cut_split_by_time, R6_ping_exactly_at_midnight
+  day cut UTC+9 -> UTC+9.01 h                          CAUGHT by 2  R6_day_cut_split_by_time, R6_ping_exactly_at_midnight
+  day cut shifted by 0.01 s                            CAUGHT by 2  R6_day_cut_split_by_time, R6_ping_exactly_at_midnight
+  zone moved north by 0.01 m                           CAUGHT by 4  R5_R6_line_crosses_zone_edge_and_midnight, R5_ping_exactly_on_zone_edge, R5_zone_east_west_edges, R5_zone_inner_corner
+  zone moved south by 0.01 m                           CAUGHT by 3  R5_R6_line_crosses_zone_edge_and_midnight, R5_ping_exactly_on_zone_edge, R5_zone_east_west_edges
+  EARTH_R_M 6371008.8 -> 6371008.81 (+0.01 m)          CAUGHT by 2  R4_speed_limit_nearest_floats, distance_uses_mean_earth_radius
+
+B. Each rule switched off
+  R1 off (dedup (first arrival))                       CAUGHT by 2  R1_duplicates_first_arrival_kept, R1_shifted_copy_arriving_first_is_kept
+  R2 off (sort by timestamp)                           CAUGHT by 1  R2_late_ping_placed_by_its_timestamp
+  R3 off (ignore > 100 m off road)                     CAUGHT by 2  R3_off_road_limit_1mm, R3_off_road_limit_nearest_floats
+  R4 off (ignore > 150 km/h vs last accepted)          CAUGHT by 5  R4_jump_does_not_move_anchor, R4_speed_limit_1mm, R4_speed_limit_nearest_floats, R8_bad_first_ping, R8_bad_second_ping_keeps_good_anchor
+  R5 off (bill only inside zone (cut at edge))         CAUGHT by 5  R5_R6_line_crosses_zone_edge_and_midnight, R5_ping_exactly_on_zone_edge, R5_zone_east_west_edges, R5_zone_inner_corner, R5_zone_north_south_edges
+  R6 off (day cut 00:00 UTC+9)                         CAUGHT by 3  R5_R6_line_crosses_zone_edge_and_midnight, R6_day_cut_split_by_time, R6_ping_exactly_at_midnight
+  R7 off (no billing across gaps > 60 s)               CAUGHT by 1  R7_gap_limit_60s
+  R8 off (verify unconfirmed anchor (look-ahead))      CAUGHT by 1  R8_bad_first_ping
+
+C. Reviewer blind-spot mutants
+  flat-world distance instead of haversine             CAUGHT by 6  R1_shifted_copy_arriving_first_is_kept, R3_off_road_limit_1mm, R3_off_road_limit_nearest_floats, R4_speed_limit_nearest_floats, R5_zone_inner_corner, R5_zone_north_south_edges
+  zone crossings ignore north-south edges              CAUGHT by 2  R5_zone_inner_corner, R5_zone_north_south_edges
+  projection forgets cos(latitude) (shared by tests)   CAUGHT by 17 R2_late_ping_placed_by_its_timestamp, R3_off_road_limit_1mm, R3_off_road_limit_nearest_floats, R4_jump_does_not_move_anchor, R4_speed_limit_1mm, R4_speed_limit_nearest_floats, R5_R6_line_crosses_zone_edge_and_midnight, R5_ping_exactly_on_zone_edge, R5_zone_east_west_edges, R5_zone_inner_corner, R5_zone_north_south_edges, R7_gap_limit_60s, R8_bad_first_ping, R8_bad_second_ping_keeps_good_anchor, distance_uses_mean_earth_radius, drivers_interleaved_in_arrival_order, projection_pinned_to_independent_values
+  dedup keeps last arrival (feed reversed)             CAUGHT by 2  R1_duplicates_first_arrival_kept, R1_shifted_copy_arriving_first_is_kept
+  day: whole line to start ping's day (no split)       CAUGHT by 1  R6_day_cut_split_by_time

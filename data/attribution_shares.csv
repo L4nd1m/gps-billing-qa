@@ -1,0 +1,6 @@
+fix,rule,removed_alone_m,removed_ladder_m,shapley_m,shapley_share
+1,sort by timestamp,20091.027,20091.027,16238.014,0.2315
+2,no abs(dt): drop stale ping,20481.094,0.000,16369.623,0.2334
+3,speed check before anchor move,-3616.149,-557.567,-119.190,-0.0017
+4,cut at zone edge,-35622.911,257.907,-11631.025,-0.1658
+5,day cut at 00:00 UTC+9,50349.762,50349.630,49283.576,0.7026

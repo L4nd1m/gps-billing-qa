@@ -1,0 +1,24 @@
+﻿All rules ON vs expected km (UTC+9 days)
+driver  day             fixed_m   expected_m     diff_m  result
+DRV-01  2026-03-10     8998.681     8998.681  -0.000000  PASS
+DRV-01  2026-03-11     6998.901     6998.901  +0.000000  PASS
+DRV-02  2026-03-10     2417.052     2417.052  -0.000000  PASS
+DRV-02  2026-03-11    14972.468    14972.468  -0.000000  PASS
+DRV-03  2026-03-10    26000.000    26000.000  +0.000000  PASS
+DRV-04  2026-03-11        0.000        0.000  +0.000000  PASS
+DRV-05  2026-03-10    11060.056    11060.056  +0.000000  PASS
+DRV-05  2026-03-11     3203.512     3203.512  -0.000000  PASS
+max |diff| = 0.000000 m  (tolerance 1.0 m)
+
+Each rule switched OFF alone (others ON):
+  rule off meaning                               abs error m  total calc-exp m
+  none all rules on                                0.000            +0.000
+  R1   dedup (first arrival)                       0.000            +0.000
+  R2   sort by timestamp                        3660.606         +3456.344
+  R3   ignore > 100 m off road                  3129.960         +3129.960
+  R4   ignore > 150 km/h vs last accepted      56195.104        +56195.104
+  R5   bill only inside zone (cut at edge)    208584.022       +208584.022
+  R6   day cut 00:00 UTC+9                     50349.762            +0.000
+  R7   no billing across gaps > 60 s               0.000            +0.000
+  R8   verify unconfirmed anchor (look-ahead)        0.000            +0.000
+wrote data\fixed_km.csv

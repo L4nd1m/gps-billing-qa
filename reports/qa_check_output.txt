@@ -1,0 +1,26 @@
+﻿check                    flagged in key    TP   FP   FN
+duplicate                    100    100   100    0    0
+duplicate_exact               50     50    50    0    0
+duplicate_shifted             50     50    50    0    0
+arrived_out_of_order          99     99    99    0    0
+off_road                      60     60    60    0    0
+speed                         30     30    30    0    0
+kept_set                    2160   2160  2160    0    0
+
+segments 2155, gaps over 60 s skipped 0, zone-edge crossings 111, day-cut crossings 2, pings on cut ['P01536']
+start-point-only zone test, abs error on crossing segments: 8,487.108 m
+in-zone metres whose UTC date != UTC+9 date: 25,174.881 m
+checker km vs expected: 0 driver-days off by > 1.0 m
+
+driver  day           expected        before (legacy)          after (fixed)
+DRV-01  2026-03-10    8998.681   20111.099 (+11112.419)    8998.681 (   -0.000)
+DRV-01  2026-03-11    6998.901       0.000 (-6998.901)    6998.901 (   +0.000)
+DRV-02  2026-03-10    2417.052   20756.196 (+18339.144)    2417.052 (   -0.000)
+DRV-02  2026-03-11   14972.468       0.000 (-14972.468)   14972.468 (   -0.000)
+DRV-03  2026-03-10   26000.000   32472.443 (+6472.443)   26000.000 (   +0.000)
+DRV-04  2026-03-11       0.000       0.000 (   +0.000)       0.000 (   +0.000)
+DRV-05  2026-03-10   11060.056   20102.269 (+9042.213)   11060.056 (   +0.000)
+DRV-05  2026-03-11    3203.512       0.000 (-3203.512)    3203.512 (   -0.000)
+
+report: reports/qa_report.html
+RESULT: PASS

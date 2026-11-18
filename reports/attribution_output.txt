@@ -1,0 +1,63 @@
+﻿STEP 1  replica(no fixes) vs gpsqa.legacy
+  driver-days: legacy 4, replica 4, same keys: True
+  DRV-01 2026-03-10  legacy 20111.099467  replica 20111.099467  diff 0.0
+  DRV-02 2026-03-10  legacy 20756.195681  replica 20756.195681  diff 0.0
+  DRV-03 2026-03-10  legacy 32472.443185  replica 32472.443185  diff 0.0
+  DRV-05 2026-03-10  legacy 20102.269054  replica 20102.269054  diff 0.0
+  bit-identical values: 4/4; max |diff| = 0.0 m
+  REPRODUCED EXACTLY (0.000 m)
+
+STEP 2  all 32 combinations (error = sum |calc - expected| over driver-days)
+  fixes on           abs error m  total calc-exp m
+  none (legacy)        70141.099        +19791.337
+  1                    50050.072         -3469.639
+  2                    49660.005         -3249.334
+  3                    73757.248        +23407.486
+  4                   105764.010        +55414.249
+  5                    19791.337        +19791.337
+  1,2                  50050.072         -3469.639
+  1,3                  50607.639          -470.564
+  1,4                  49818.747         -3281.650
+  1,5                   3518.825         -3469.639
+  2,3                  50514.771          +165.010
+  2,4                  49485.896         -3614.501
+  2,5                   3550.269         -3249.334
+  3,4                 110270.194        +59920.432
+  3,5                  23407.486        +23407.486
+  4,5                  55414.249        +55414.249
+  1,2,3                50607.639          -470.564
+  1,2,4                49818.747         -3281.650
+  1,2,5                 3518.825         -3469.639
+  1,3,4                50349.732            -0.102
+  1,3,5                  901.502          -470.564
+  1,4,5                 3281.650         -3281.650
+  2,3,4                50279.557           -70.277
+  2,3,5                  413.462          +165.010
+  2,4,5                 3614.501         -3614.501
+  3,4,5                59920.432        +59920.432
+  1,2,3,4              50349.732            -0.102
+  1,2,3,5                901.502          -470.564
+  1,2,4,5               3281.650         -3281.650
+  1,3,4,5                  0.102            -0.102
+  2,3,4,5                 70.277           -70.277
+  1,2,3,4,5                0.102            -0.102
+
+STEP 3  error with no fixes 70141.099 m; with all fixes 0.102 m; removed 70140.997 m
+  fix rule                                   alone  ladder 1..5     Shapley   share
+    1 sort by timestamp                  20091.027    20091.027   16238.014   23.2%
+    2 no abs(dt): drop stale ping        20481.094        0.000   16369.623   23.3%
+    3 speed check before anchor move     -3616.149     -557.567    -119.190   -0.2%
+    4 cut at zone edge                  -35622.911      257.907  -11631.025  -16.6%
+    5 day cut at 00:00 UTC+9             50349.762    50349.630   49283.576   70.3%
+      SUM                                51682.822    70140.997   70140.997
+
+All fixes on vs expected, per driver-day:
+  DRV-01 2026-03-10  all-fixes     8998.668  expected     8998.681  diff -0.012
+  DRV-01 2026-03-11  all-fixes     6998.891  expected     6998.901  diff -0.010
+  DRV-02 2026-03-10  all-fixes     2417.049  expected     2417.052  diff -0.003
+  DRV-02 2026-03-11  all-fixes    14972.447  expected    14972.468  diff -0.021
+  DRV-03 2026-03-10  all-fixes    25999.964  expected    26000.000  diff -0.036
+  DRV-04 2026-03-11  all-fixes        0.000  expected        0.000  diff +0.000
+  DRV-05 2026-03-10  all-fixes    11060.041  expected    11060.056  diff -0.015
+  DRV-05 2026-03-11  all-fixes     3203.508  expected     3203.512  diff -0.004
+wrote data\attribution_combos.csv, data\attribution_shares.csv
